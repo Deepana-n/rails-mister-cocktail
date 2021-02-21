@@ -1,12 +1,30 @@
-<div class="container">
-  <h3><%= @cocktail.name %></h3>
-  <ul>
-    <% @doses.each do |dose| %>
-      <li><%= dose.ingredient.name %> — <%= dose.description %>
-          <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "You sure?" } %>
-      </li>
-    <% end %>
-  </ul>
-  <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail) %> |
-  <%= link_to "Back", cocktails_path %>
+<%= render "shared/navbar" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg?quality=90&webp=true&resize=430,390);">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+  </div>
 </div>
+<div class="container">
+  <div class="row d-flex p-3 bd-highlight justify-content-around ">
+    <div class="p-2 bg-white flex-grow-1 rounded" >
+      <h5>Ingredients:</h5>
+      <ul>
+        <% @doses.each do |dose| %>
+        <li><%= dose.ingredient.name %> — <%= dose.description %>
+          <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "You sure?" } %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="p-2 bg-white flex-fill rounded">
+      <p>Add dose for <%= @cocktail.name %></p>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description %>
+      <%= f.association :ingredient, collection: Ingredient.order(:name), prompt: "Choose an ingredient" %>
+      <%= f.submit "Add an ingredient", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
