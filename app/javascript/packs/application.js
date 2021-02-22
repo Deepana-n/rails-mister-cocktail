@@ -16,3 +16,26 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
+import { showForm } from '../components/show_form.js';
+
+// const button = document.querySelector('#hide');
+// console.log(button)
+// const showForm = (event) => {
+//   event.preventDefault();
+//   document.querySelector('.form-hide').style.display ='block';
+// }
+
+
+// button.addEventListener('click', showForm);
+// export { showForm };
+// document.addEventListener("load", showForm());
+showForm();
+
+
+
+
+
+
+
+
+
