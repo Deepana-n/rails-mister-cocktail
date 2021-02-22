@@ -25,6 +25,8 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.find(params[:id])
     @doses = Dose.where(cocktail_id: params[:id])
     @dose = Dose.new
+    @review = Review.new
+    @reviews = Review.where(cocktail_id: params[:id])
   end
 
   def update

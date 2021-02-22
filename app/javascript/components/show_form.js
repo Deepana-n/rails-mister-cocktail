@@ -1,12 +1,15 @@
-  const button = document.querySelector('#hide');
-  const showForm = (event) => {
-    event.preventDefault();
-    const form = document.querySelector('.form-hide').style.display = 'block';
+  const bindShowForm = () => {
+    const button = document.querySelector('#hide');
+    if (button) {
+      button.addEventListener('click', showForm);
+    }
   }
 
-  console.log(button);
 
-  button.addEventListener('click', showForm);
+  const showForm = (event) => {
+    event.preventDefault();
+    document.querySelector('.form-hide').style.display = 'block';
+  }
 
 
-export { showForm };
+export { bindShowForm };

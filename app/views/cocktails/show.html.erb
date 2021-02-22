@@ -25,6 +25,27 @@
       <% end %>
     </div>
   </div>
-</div>
+  <div class="row d-flex p-3 bd-highlight justify-content-around ">
+    <div class="p-2 bg-white flex-grow-1" >
+      <h5>Reviews:</h5>
+      <ul>
+        <% @reviews.each do |review| %>
+        <li><%= review.content %> — <%= review.rating %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="bg-white flex-fill">
+      <div class="row d-flex bd-highlight justify-content-around ">
+        <div class="p-2 bg-white flex-fill">
+          <%= simple_form_for [@cocktail, @review] do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating %>
+          <%= f.submit "Add Review", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 

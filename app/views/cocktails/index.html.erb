@@ -6,10 +6,18 @@
     <div class="card">
       <%= image_tag "cocktail.jpg", :height=>200 %>
       <div class="card-body">
+        <% sum = 0 %>
+        <% cocktail.reviews.each {|review| sum += review.rating.to_i} %>
+        <% if cocktail.reviews.length != 0%>
+        <% avg = (sum/cocktail.reviews.length).to_i%>
+        <% end %>
+        <% for i in 1...avg do %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
         <h5 class="card-title"><%= link_to cocktail.name, cocktail_path(cocktail)%></h5>
       </div>
     </div>
-   <% end %>
+    <% end %>
   </div>
 </div>
 
