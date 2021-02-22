@@ -1,4 +1,4 @@
-giGEM
+GEM
   remote: https://rubygems.org/
   specs:
     actioncable (6.0.3.5)
